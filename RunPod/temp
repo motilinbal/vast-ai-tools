@@ -1,0 +1,115 @@
+🚀 Starting VS Code connection process for Pod ID: emecnuomcylru3...
+++ echo 'API_URL=[https://api.runpod.io/graphql?api_key=#####]'
+API_URL=[https://api.runpod.io/graphql?api_key=#####]
+++ echo 'QUERY_PAYLOAD=[{"query": "query Pod { pod(input: {podId: \"emecnuomcylru3\"}) { id runtime { ports { ip privatePort publicPort type } } } }"}]'
+QUERY_PAYLOAD=[{"query": "query Pod { pod(input: {podId: \"emecnuomcylru3\"}) { id runtime { ports { ip privatePort publicPort type } } } }"}]
+++ curl -v -X POST -H 'Content-Type: application/json' -d '{"query": "query Pod { pod(input: {podId: \"emecnuomcylru3\"}) { id runtime { ports { ip privatePort publicPort type } } } }"}' 'https://api.runpod.io/graphql?api_key=#####' -o /tmp/raw_response.json -w '\nHTTP_STATUS:%{http_code}\n'
+Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host api.runpod.io:443 was resolved.
+* IPv6: 2606:4700:10::ac43:cc5, 2606:4700:10::ac42:9e4e
+* IPv4: 172.67.12.197, 172.66.158.78
+*   Trying 172.67.12.197:443...
+* Connected to api.runpod.io (172.67.12.197) port 443
+* ALPN: curl offers h2,http/1.1
+} [5 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+} [512 bytes data]
+*  CAfile: /etc/ssl/certs/ca-certificates.crt
+*  CApath: /etc/ssl/certs
+{ [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+{ [19 bytes data]
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+{ [2518 bytes data]
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+{ [80 bytes data]
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+{ [52 bytes data]
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+} [52 bytes data]
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519 / id-ecPublicKey
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=api.runpod.io
+*  start date: Jun 13 02:06:26 2025 GMT
+*  expire date: Sep 11 03:06:22 2025 GMT
+*  subjectAltName: host "api.runpod.io" matched cert's "api.runpod.io"
+*  issuer: C=US; O=Google Trust Services; CN=WE1
+*  SSL certificate verify ok.
+*   Certificate level 0: Public key type EC/prime256v1 (256/128 Bits/secBits), signed using ecdsa-with-SHA256
+*   Certificate level 1: Public key type EC/prime256v1 (256/128 Bits/secBits), signed using ecdsa-with-SHA384
+*   Certificate level 2: Public key type EC/secp384r1 (384/192 Bits/secBits), signed using ecdsa-with-SHA384
+} [5 bytes data]
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://api.runpod.io/graphql?api_key=#####
+* [HTTP/2] [1] [:method: POST]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: api.runpod.io]
+* [HTTP/2] [1] [:path: /graphql?api_key=#####]
+* [HTTP/2] [1] [user-agent: curl/8.5.0]
+* [HTTP/2] [1] [accept: */*]
+* [HTTP/2] [1] [content-type: application/json]
+* [HTTP/2] [1] [content-length: 126]
+} [5 bytes data]
+> POST /graphql?api_key=##### HTTP/2
+> Host: api.runpod.io
+> User-Agent: curl/8.5.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 126
+> 
+} [126 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [230 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [230 bytes data]
+* old SSL session ID is stale, removing
+{ [5 bytes data]
+100   126    0     0  100   126      0    325 --:--:-- --:--:-- --:--:--   325< HTTP/2 200 
+< date: Tue, 15 Jul 2025 04:55:51 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 212
+< x-frame-options: SAMEORIGIN
+< content-security-policy: frame-ancestors 'self'
+< cache-control: no-store
+< etag: W/"d4-2Mpya9xQM+f3zkYNGlOs5cedw8g"
+< x-powered-by: Express
+< apigw-requestid: Nu_VsguuIAMEV3A=
+< cf-cache-status: DYNAMIC
+< server: cloudflare
+< cf-ray: 95f6ab811cbdd243-FRA
+< 
+{ [212 bytes data]
+100   338  100   212  100   126    231    137 --:--:-- --:--:-- --:--:--   369
+* Connection #0 to host api.runpod.io left intact
+
+HTTP_STATUS:200
+++ echo '--- RAW RESPONSE DUMP ---'
+--- RAW RESPONSE DUMP ---
+++ cat -A /tmp/raw_response.json
+{"data":{"pod":{"id":"emecnuomcylru3","runtime":{"ports":[{"ip":"100.65.15.232","privatePort":19123,"publicPort":60642,"type":"http"},{"ip":"194.68.245.173","privatePort":22,"publicPort":22049,"type":"tcp"}]}}}}$
+++ echo '--- END DUMP ---'
+--- END DUMP ---
+++ local ssh_info
++++ curl -s -X POST -H 'Content-Type: application/json' -d '{"query": "query Pod { pod(input: {podId: \"emecnuomcylru3\"}) { id runtime { ports { ip privatePort publicPort type } } } }"}' 'https://api.runpod.io/graphql?api_key=#####'
++++ jq -r '(.data.pod.runtime.ports // [])[] | select(.privatePort == 22) | {host: .ip, port: .publicPort}'
+++ ssh_info='{
+  "host": "194.68.245.173",
+  "port": 22049
+}'
+++ [[ -n {
+  "host": "194.68.245.173",
+  "port": 22049
+} ]]
+++ echo '{
+  "host": "194.68.245.173",
+  "port": 22049
+}'
+++ return
+jq: parse error: Invalid numeric literal at line 1, column 5
