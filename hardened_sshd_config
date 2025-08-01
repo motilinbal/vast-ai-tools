@@ -1,28 +1,22 @@
 # Hardened SSH Configuration for Vast.ai Container
 
-# The crucial fix: Listen on all IPv4 and IPv6 interfaces, including localhost.
+# Listen on all interfaces for health checks and external connections.
 ListenAddress 0.0.0.0
 ListenAddress ::
 
-# Standard SSH settings
+# THE FIX: Explicitly enable TCP Forwarding for VS Code Remote-SSH.
+AllowTcpForwarding yes
+
+# Standard and hardened settings
 Port 22
 Protocol 2
 PermitRootLogin yes
 UsePAM yes
-
-# Enforce key-based authentication for security
 PasswordAuthentication no
 ChallengeResponseAuthentication no
 PermitEmptyPasswords no
-
-# Disable unnecessary and potentially risky features
 X11Forwarding no
 AllowAgentForwarding no
-AllowTcpForwarding no
-
-# Increase logging verbosity for easier debugging
 LogLevel VERBOSE
-
-# Standard directives for compatibility
 AcceptEnv LANG LC_*
 Subsystem sftp /usr/lib/openssh/sftp-server

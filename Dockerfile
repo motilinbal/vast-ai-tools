@@ -14,6 +14,7 @@ RUN mkdir -p /var/run/sshd && chmod 0755 /var/run/sshd
 
 # Copy the hardened sshd_config file into the image.
 COPY hardened_sshd_config /etc/ssh/sshd_config
+
 # Ensure correct, restrictive permissions on the configuration file
 RUN chmod 600 /etc/ssh/sshd_config
 
@@ -22,6 +23,11 @@ WORKDIR /workspace
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 # Stage 4: Final Configuration
 EXPOSE 22 8080
-CMD ["/bin/bash"]
+
+ENTRYPOINT ["/entrypoint.sh"]
