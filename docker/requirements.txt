@@ -50,3 +50,4 @@ peft
 trl
 evaluate
 text-generation
+torchao

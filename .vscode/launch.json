@@ -1,11 +1,20 @@
 {
     "configurations": [
         {
-            "name": "Python Debugger: Current File",
+            "name": "Python Debugger: Current File (venv)",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python"
+        },
+        {
+            "name": "Python Debugger: deploy.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/deploy.py",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python"
         }
     ]
 }
