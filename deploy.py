@@ -5,12 +5,7 @@ import subprocess
 import requests
 from pathlib import Path
 from typing import Optional, Dict, Any
-
-try:
-    import vastai_sdk
-except ImportError:
-    print("Error: vastai_sdk not found. Please run 'pip install vastai_sdk'", file=sys.stderr)
-    sys.exit(1)
+import vastai_sdk
 
 # --- Configuration ---
 DOCKER_IMAGE = "motilin/huggingface-pytorch-ml:latest"
